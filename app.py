@@ -21,8 +21,9 @@ with st.sidebar:
 
 def main():
     load_dotenv()
-    api_key = os.getenv("OPENAI_API_KEY")
-    print(api_key)
+    openai_api_key = st.secrets.get("OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
+    if not openai_api_key:
+        st.error("OPENAI_API_KEY not found. Please set it in Streamlit secrets or your .env file.")
     st.header("Upload and Chat with PDF")
     uploaded_file = st.file_uploader("Upload a File", type='pdf')
     # st.write(uploaded_file.name)
