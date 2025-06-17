@@ -21,6 +21,8 @@ with st.sidebar:
 
 def main():
     load_dotenv()
+    api_key = os.getenv("OPENAI_API_KEY")
+    print(api_key)
     st.header("Upload and Chat with PDF")
     uploaded_file = st.file_uploader("Upload a File", type='pdf')
     # st.write(uploaded_file.name)
